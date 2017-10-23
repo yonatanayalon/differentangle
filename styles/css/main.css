@@ -1,0 +1,232 @@
+@import url('fonts.css');
+
+body,html {
+    /*height: 100%;*/
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: rgba(0,148,189,.1);
+}
+.logo {
+    background: url(../../images/logo.png) no-repeat 0 0;
+    width: 250px;
+    height: 250px;
+    background-size: 250px;
+}
+
+ul li {
+    list-style: none;
+    font-size: 19px;
+}
+
+ul li i{
+    color: #0094bd;
+}
+button, input, optgroup, select, textarea {
+    font-family: 'Open Sans', sans-serif;
+}
+.btn {
+    background: #0094bd;
+    border-color: #057a9a;
+}
+
+.btn:hover, .btn:active {
+    background: #067290;
+    border-color: #067290;
+}
+.btn:focus {
+    box-shadow: 0 0 0 2px rgba(6,114,144,.5);
+}
+
+.container {
+    padding-top: 30px;
+}
+
+.left-content strong {
+    font-size: 17px;
+    font-weight: 600;
+}
+.left-content p {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.container > header {
+    display: table;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 20px;
+}
+
+.container > header h1 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+}
+
+
+form {
+    padding: 20px 20px 25px;
+    border-radius: 5px;
+    background: rgba(6,114,144,.1);
+}
+form.disabled {
+    visibility: hidden;
+}
+form .form-title {
+    text-align: center;
+    font-size: 28px;
+}
+form input {
+    padding-right: 2.25rem;
+    background-repeat: no-repeat;
+    background-position: center right .5625rem;
+    background-size: 1.125rem 1.125rem;
+    background-image: none;
+}
+form input:valid {
+    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+}
+form input:invalid {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E");
+}
+
+/* Scanner */
+
+#scanner {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#scanner.active {
+    visibility: visible;
+    display: table;
+}
+
+#scanner header {
+}
+#scanner header #website-url {
+    font-weight: 600;
+}
+
+#scanner header #scanner-title {
+
+}
+
+#scanner #results {
+    opacity: 0;
+    display: none;
+}
+
+#monitor{
+    margin:auto;
+    position:relative;
+    width:220px;
+    height:250px;
+    border:1px solid rgba(0,0,0,.1);
+}
+#monitor .screen
+{
+    margin:auto;
+    margin-top:10px;
+    width:200px;
+    height:230px;
+    background: transparent url('../../images/maketitle.jpg');
+    background-size:cover;
+    background-color: rgba(0,0,0,.2);
+}
+
+#monitor .scan
+{
+    width:100%;
+    height:10px;
+    background-color:rgba(0,0,0,.8);
+    position:absolute;
+    z-index:9999;
+    -moz-animation: scan 5s infinite;
+    -webkit-animation: scan 5s infinite;
+    animation: scan 5s infinite;
+    -webkit-animation-direction: alternate-reverse;
+    box-shadow:0px 0px 30px rgba(255,204,102,.5);
+
+
+}
+
+@-webkit-keyframes scan {
+    0%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(210px);
+        transform: translateY(240px);
+    }
+}
+
+#timer {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    top: 240px;
+    opacity: 0;
+    display: none;
+}
+#scanner.active #timer {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    opacity: 1;
+    display: block;
+}
+
+#scanner.done #timer {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    opacity: 0;
+    display: none;
+}
+#scanner.done #monitor{
+    border: 1px solid red;
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    opacity: 0;
+    display: none;
+}
+
+#scanner.done #results {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    opacity: 1;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#scanner.done header {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    opacity: 0;
+    display: none;
+}
+
+.inner-timer-wrapper {
+    display: inline-flex;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {opacity: 0;display: none;}
+    to {opacity: 1;}
+}
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;display: none;}
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+}
