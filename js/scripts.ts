@@ -2,6 +2,18 @@ var core = ( ()=> {
     var myModel = this;
     const form = document.getElementById('lp-form');
 
+    myModel.saveUser = (params) => {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                alert("Success");
+            }
+        };
+        xhttp.open("POST", "/api/users", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify(params));
+    }
+
     /**
      * Adds time to a date. Modelled after MySQL DATE_ADD function.
      * Example: dateAdd(new Date(), 'minute', 30)  //returns 30 minutes from now.
@@ -70,11 +82,12 @@ var core = ( ()=> {
         var landingPage = document.getElementById('lpUrl').value;
         var email = document.getElementById('email').value;
         var fullName = document.getElementById('fullName').value;
-        var phoneNumber = document.getElementById('phoneNumber').value;
+        var phone = document.getElementById('phone').value;
 
 
 
-        if (landingPage !== '' && email !== '' && fullName !== '' && phoneNumber !== '') {
+        if (landingPage !== '' && email !== '' && fullName !== '' && phone !== '') {
+            myModel.saveUser({'landingPage':landingPage, 'email': email, 'fullName': fullName, 'phone': phone})
             let scannerClasses = document.getElementById('scanner').classList;
             document.getElementById('website-url').innerHTML = landingPage;
             if (!scannerClasses.contains('active')) {

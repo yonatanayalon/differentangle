@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.4",
+    "q": "^1.5.1",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/mongodb": "^2.2.14",
+    "@types/mongoose": "^4.7.24"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
